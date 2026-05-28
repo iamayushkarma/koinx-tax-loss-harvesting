@@ -1,4 +1,3 @@
-import type { GainEntry } from "../api/holdings";
 import type { Holding } from "../api/holdings";
 export const HOLDINGS_DATA: Holding[] = [
   {

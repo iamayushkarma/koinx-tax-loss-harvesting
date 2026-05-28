@@ -282,7 +282,6 @@ const HoldingsTable = () => {
         </table>
       </div>
 
-      {/* view all — bottom left */}
       {holdings.length > DEFAULT_ROWS && (
         <div className="px-6 py-4 border-t border-white/5">
           <button
