@@ -63,4 +63,4 @@ src/
 
 ## Deployment
 
-Deployed on Vercel: [https://koinx-harvest.vercel.app/]
+Deployed on Vercel: https://koinx-harvest.vercel.app/
