@@ -1,5 +1,5 @@
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
-import type { CapitalGainsData } from "../../api/capitalGains";
+import type { CapitalGainsData } from "../api/capitalGains";
 
 interface Props {
   title: string;
@@ -8,7 +8,7 @@ interface Props {
   preRealisedGains?: number;
 }
 
-// shows icon based on value sign
+// showing icon based on value sign
 const GainIcon = ({ value }: { value: number }) => {
   if (value > 0)
     return <TrendingUp size={14} className="text-green-400 inline ml-1" />;
@@ -37,11 +37,11 @@ const Row = ({
       {label}
     </span>
     <span className="text-sm font-semibold text-right text-white">
-      ₹{stcg.toFixed(2)}
+      ${stcg.toFixed(2)}
       {showIcon && <GainIcon value={stcg} />}
     </span>
     <span className="text-sm font-semibold text-right text-white">
-      ₹{ltcg.toFixed(2)}
+      ${ltcg.toFixed(2)}
       {showIcon && <GainIcon value={ltcg} />}
     </span>
   </div>
@@ -63,8 +63,8 @@ const CapitalGainsCard = ({
 
   return (
     <div
-      className={`rounded-2xl p-5 flex flex-col gap-4 w-full
-      ${isAfter ? "bg-[#0052CC]" : "bg-[#1a1a2e]"}`}
+      className={`rounded-lg p-5 flex flex-col gap-4 w-full
+      ${isAfter ? "bg-[#075ffc]" : "bg-[#171823]"}`}
     >
       {/* title row */}
       <div className="flex items-center justify-between flex-wrap gap-2">
@@ -72,14 +72,13 @@ const CapitalGainsCard = ({
           {title}
         </h2>
 
-        {/* savings badge — only on after harvesting card when savings > 0 */}
         {showSavings && (
           <span
             className="flex items-center gap-1 text-xs font-semibold
             bg-green-400/20 text-green-300 px-3 py-1 rounded-full"
           >
             <TrendingDown size={12} />
-            You save ₹{savings.toFixed(2)}
+            You save ${savings.toFixed(2)}
           </span>
         )}
       </div>
@@ -88,13 +87,13 @@ const CapitalGainsCard = ({
       <div className="grid grid-cols-3">
         <span />
         <span
-          className={`text-xs font-semibold uppercase tracking-wider text-right
+          className={`text-xs font-semibold tracking-wider text-right
           ${isAfter ? "text-blue-200" : "text-gray-500"}`}
         >
           Short-Term
         </span>
         <span
-          className={`text-xs font-semibold uppercase tracking-wider text-right
+          className={`text-xs font-semibold tracking-wider text-right
           ${isAfter ? "text-blue-200" : "text-gray-500"}`}
         >
           Long-Term
@@ -125,19 +124,10 @@ const CapitalGainsCard = ({
         />
       </div>
 
-      {/* realised gains full width */}
-      <div
-        className={`flex items-center justify-between rounded-xl px-4 py-3
-        ${isAfter ? "bg-white/15" : "bg-white/5"}`}
-      >
-        <span className="text-white text-sm font-semibold">
-          Realised Capital Gains
-        </span>
-        <div className="flex items-center gap-1">
-          <span className="text-white text-base font-bold">
-            ₹{realised.toFixed(2)}
-          </span>
-          <GainIcon value={realised} />
+      <div className="flex items-center pb-4 justify-between rounded-xl">
+        <div className="text-white text-lg flex gap-8 font-semibold">
+          Realised Capital Gains:
+          <span>${realised.toFixed(2)}</span>
         </div>
       </div>
     </div>
