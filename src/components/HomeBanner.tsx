@@ -66,7 +66,7 @@ function HomeBanner() {
 
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden
-          ${disclaimerOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+          ${disclaimerOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="px-6 py-4 bg-[#132043] flex flex-col gap-4 text-sm text-gray-300 leading-relaxed">
           {DISCLAIMERS.map((item) => (

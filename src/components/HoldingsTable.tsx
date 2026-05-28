@@ -219,7 +219,7 @@ const HoldingsTable = () => {
 
                   <td className="py-4 pr-4 text-right">
                     <div className="flex flex-col items-end">
-                      <span className="text-white text-sm font-medium">
+                      <span className="text-white text-sm font-medium ">
                         {formatBalance(holding.totalHolding, holding.coin)}
                       </span>
                       <span className="text-gray-500 text-xs mt-0.5">

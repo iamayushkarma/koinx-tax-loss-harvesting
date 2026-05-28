@@ -26,7 +26,7 @@ function HomeHeader() {
           </div>
         }
       >
-        <span className="text-blue-400 text-sm font-medium hover:underline cursor-pointer">
+        <span className="text-blue-400 select-none text-sm font-medium hover:underline cursor-pointer">
           How it works?
         </span>
       </Tooltip>

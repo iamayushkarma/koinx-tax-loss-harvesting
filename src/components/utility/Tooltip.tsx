@@ -43,9 +43,10 @@ const Tooltip = ({ children, content, position = "bottom" }: Props) => {
   return (
     <div
       ref={ref}
-      className="relative inline-block"
+      className="relative inline-block "
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen((v) => !v)}
     >
       {/* trigger */}
       <div className="cursor-pointer">{children}</div>
@@ -53,16 +54,20 @@ const Tooltip = ({ children, content, position = "bottom" }: Props) => {
       {/* tooltip box */}
       {open && (
         <div
-          className={`absolute z-50 w-max max-w-xs bg-white text-gray-800 rounded-2xl
-          shadow-2xl p-4 text-sm leading-relaxed ${boxClass[position]}`}
+          className={`
+      fixed left-4 right-4 z-50 max-sm:mt-2 bg-white text-gray-800 rounded-2xl shadow-2xl p-4 text-sm leading-relaxed
+      sm:absolute sm:left-auto sm:right-auto sm:w-max sm:max-w-xs ${boxClass[
+        position
+      ]
+        .split(" ")
+        .map((c) => `sm:${c}`)
+        .join(" ")}
+    `}
         >
-          <span className={`absolute w-0 h-0 ${arrowClass[position]}`} />
-          <button
-            onClick={() => setOpen(false)}
-            className="block sm:hidden absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <X size={16} />
-          </button>
+          <span
+            className={`hidden sm:absolute w-0 h-0 ${arrowClass[position]}`}
+          />
+          {/* close button only on mobile since there's no hover to dismiss */}
 
           {content}
         </div>
