@@ -6,6 +6,7 @@ import Loader from "./components/Loader/Loader";
 import ErrorState from "./components/ErrorState/ErrorState";
 import { useHarvesting } from "./context/HarvestingContext";
 import { HarvestingProvider } from "./context/HarvestingContext";
+import Tooltip from "./components/Tooltip/Tooltip";
 
 function TaxPage() {
   const { capitalGains, afterHarvesting, loading, error, retry } =
@@ -22,16 +23,38 @@ function TaxPage() {
     (capitalGains.ltcg.profits - capitalGains.ltcg.losses);
 
   return (
-    <div className="min-h-screen bg-[#0f0f1a] px-4 py-6 md:px-10 md:py-8">
+    <div className="min-h-screen px-4 py-6 md:px-10 md:py-8">
       {/* header */}
       <div className="flex items-center gap-4 mb-6">
         <h1 className="text-white text-2xl font-bold">Tax Optimisation</h1>
-        <a
-          href="#"
-          className="text-blue-400 text-sm font-medium hover:underline"
+        <Tooltip
+          position="bottom"
+          content={
+            <div className="flex flex-col gap-3 pr-4">
+              <ul className="flex flex-col gap-2 text-gray-700">
+                <li>
+                  • See your capital gains for FY 2024-25 in the left card
+                </li>
+                <li>
+                  • Check boxes for assets you plan on selling to reduce your
+                  tax liability
+                </li>
+                <li>
+                  • Instantly see your updated tax liability in the right card
+                </li>
+              </ul>
+              <p className="text-gray-800">
+                <span className="font-bold">Pro tip:</span> Experiment with
+                different combinations of your holdings to optimize your tax
+                liability
+              </p>
+            </div>
+          }
         >
-          How it works?
-        </a>
+          <span className="text-blue-400 text-sm font-medium hover:underline cursor-pointer">
+            How it works?
+          </span>
+        </Tooltip>
       </div>
 
       {/* disclaimer banner */}
