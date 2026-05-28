@@ -11,6 +11,7 @@ interface HarvestingContextType {
   toggleAll: (selectAll: boolean) => void;
   loading: boolean;
   error: string | null;
+  retry: () => void;
 }
 
 const HarvestingContext = createContext<HarvestingContextType | null>(null);
@@ -29,6 +30,7 @@ export const HarvestingProvider = ({
     useState<CapitalGainsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   // Fetching both api when site mounts
   useEffect(() => {
@@ -50,7 +52,7 @@ export const HarvestingProvider = ({
     };
 
     loadData();
-  }, []);
+  }, [retryCount]);
 
   // recalculate after harvesting whenever selection changes
 
@@ -108,6 +110,11 @@ export const HarvestingProvider = ({
         toggleAll,
         loading,
         error,
+        retry: () => {
+          setError(null);
+          setLoading(true);
+          setRetryCount((c) => c + 1);
+        },
       }}
     >
       {children}
